@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,13 +28,11 @@ public class Sudoku {
 		try {
 		    file = new FileInputStream(path+File.separator+args[5]);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("找不到文件，文件参数错误！");
 		}
 		try {
 			out = new FileOutputStream(path+File.separator+args[7]);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Scanner sc = new Scanner(file);
@@ -46,6 +45,26 @@ public class Sudoku {
 			}
 			dfs(0);
 		}
+		if(file!=null) {
+			try {
+				file.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(out!=null) {
+			try {
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(sc!=null) {
+			sc.close();
+		}
+		
 	}
 	
 	public static void dfs(int cut) {
@@ -85,7 +104,6 @@ public class Sudoku {
 				try {
 					out.write((arr[i][j]+" ").getBytes());
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -93,7 +111,6 @@ public class Sudoku {
 			try {
 				out.write("\n".getBytes());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			};
 		}
@@ -101,7 +118,6 @@ public class Sudoku {
 		try {
 			out.write("\n".getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		};
 	}
